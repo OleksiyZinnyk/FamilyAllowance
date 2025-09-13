@@ -1,7 +1,10 @@
+package studentorder;
+
+import studentorder.domain.StudentOrder;
+
 public class SaveStudentOrder {
     public static void main(String[] args) {
-        StudentOrder so;
-        so = new StudentOrder();
+        StudentOrder so = new StudentOrder();
         so.hFirstName = "Olekisy";
         so.hLastName = "Zinnyk";
         so.wFirstName = "Masha";
