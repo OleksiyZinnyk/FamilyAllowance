@@ -1,5 +1,6 @@
 package studentorder;
 
+import studentorder.domain.Adult;
 import studentorder.domain.StudentOrder;
 
 public class SaveStudentOrder {
@@ -18,6 +19,8 @@ public class SaveStudentOrder {
     public static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
         so.setStudentOrderId(id);
+
+        Adult husband = new Adult("Zinnyk", "Oleksiy", "Sergiyovich", null);
 
         return so;
     }
