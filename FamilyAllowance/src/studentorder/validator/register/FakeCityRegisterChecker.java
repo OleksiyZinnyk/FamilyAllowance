@@ -1,10 +1,11 @@
-package studentorder.validator;
+package studentorder.validator.register;
 
 import studentorder.domain.Adult;
 import studentorder.domain.Child;
-import studentorder.domain.CityRegisterCheckerResponse;
 import studentorder.domain.Person;
+import studentorder.domain.register.CityRegisterResponse;
 import studentorder.exception.CityRegisterException;
+import studentorder.exception.TransportException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker
 {
@@ -14,10 +15,12 @@ public class FakeCityRegisterChecker implements CityRegisterChecker
     public static final String BAD_2 = "2001";
     public static final String ERROR_1 = "1002";
     public static final String ERROR_2 = "2002";
+    public static final String ERROR_T_1 = "1003";
+    public static final String ERROR_T_2 = "2003";
 
-    public CityRegisterCheckerResponse checkPerson(Person person)
-            throws CityRegisterException {
-        CityRegisterCheckerResponse res = new CityRegisterCheckerResponse();
+    public CityRegisterResponse checkPerson(Person person)
+            throws CityRegisterException, TransportException {
+        CityRegisterResponse res = new CityRegisterResponse();
         if (person instanceof Adult){
             Adult t = (Adult) person;
             String ps = t.getPassportSeria();
@@ -29,7 +32,11 @@ public class FakeCityRegisterChecker implements CityRegisterChecker
                 res.setExisting(false);
             }
             if(ps.equals(ERROR_1) || ps.equals(ERROR_2)){
-                CityRegisterException ex = new CityRegisterException("Fake Error");
+                CityRegisterException ex = new CityRegisterException("1","GRN Error" + ps);
+                throw ex;
+            }
+            if(ps.equals(ERROR_T_1) || ps.equals(ERROR_T_2)){
+                TransportException ex = new TransportException("Transport Error" + ps);
                 throw ex;
             }
         }
