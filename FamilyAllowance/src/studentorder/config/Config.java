@@ -1,6 +1,5 @@
 package studentorder.config;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -12,12 +11,12 @@ public class Config {
 
     private static Properties properties = new Properties();
 
-    public synchronized static String getProperties(String name){
-        if (properties.isEmpty()){
-            try (InputStream is = Config.class.getClassLoader().getResourceAsStream("dao.properties")){
+    public synchronized static String getProperties(String name) {
+        if (properties.isEmpty()) {
+            try (InputStream is = Config.class.getClassLoader().getResourceAsStream("dao.properties")) {
 
                 properties.load(is);
-            }catch(Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 throw new RuntimeException(ex);
             }
