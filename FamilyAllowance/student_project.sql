@@ -4,12 +4,20 @@ drop table if exists jc_passport_office;
 drop table if exists jc_register_office;
 drop table if exists jc_country_struct;
 drop table if exists jc_street;
+drop table if exists jc_university ;
 
 create table jc_street
 (
     street_code integer not null,
     street_name varchar(300),
     primary key(street_code)
+);
+
+create table jc_university
+(
+    university_id integer not null,
+    university_name varchar(300),
+    primary key(university_id)
 );
 
 create table jc_country_struct
@@ -55,6 +63,8 @@ create table jc_student_order
     h_building varchar(10) not null,
     h_extension varchar(10),
     h_apartment varchar(10),
+    h_university_id integer not null,
+    h_student_number varchar(30) not null,
     w_sur_name varchar(100) not null,
     w_given_name varchar(100) not null,
     w_patronymic varchar (100) not null,
@@ -68,12 +78,18 @@ create table jc_student_order
     w_building varchar(10) not null,
     w_extension varchar(10),
     w_apartment varchar(10),
+    w_university_id integer not null,
+    w_student_number varchar(30) not null,
     certificate_id varchar(20) not null,
     register_office_id integer not null,
     marriage_date date not null,
     primary key (student_order_id),
     foreign key (h_street_code) references jc_street(street_code) on delete restrict,
+    foreign key (h_passport_office_id) references jc_passport_office(p_office_id) on delete restrict,
+    foreign key (h_university_id) references jc_university(university_id) on delete restrict,
     foreign key (w_street_code) references jc_street(street_code) on delete restrict,
+    foreign key (w_passport_office_id) references jc_passport_office(p_office_id) on delete restrict,
+    foreign key (w_university_id) references jc_university(university_id) on delete restrict,
     foreign key (register_office_id) references jc_register_office(r_office_id) on delete restrict
 );
 

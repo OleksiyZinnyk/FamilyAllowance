@@ -5,6 +5,11 @@ INSERT INTO jc_street (street_code, street_name) VALUES
 (4, 'Khrehatik street'),
 (5, 'Veteranov avenue');
 
+INSERT INTO jc_university (university_id, university_name) VALUES
+(1, 'Національний Транспортний університет'),
+(2, 'Політехничий університет'),
+(3, 'Національний Авіаційний університет');
+
 INSERT INTO jc_country_struct (area_id, area_name) VALUES
 ('010000000000', 'City'),
 ('010010000000', 'City Район 1'),
