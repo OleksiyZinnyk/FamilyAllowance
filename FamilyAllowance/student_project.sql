@@ -113,3 +113,7 @@ create table jc_student_child
     foreign key (c_street_code) references jc_street(street_code) on delete restrict,
     foreign key (c_register_office_id) references jc_register_office(r_office_id) on delete restrict
 );
+
+create index idx_student_order_status on jc_student_order(student_order_status);
+
+create index idx_student_order_id on jc_student_child(student_order_id);
